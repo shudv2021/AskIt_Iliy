@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
       
-
+  before_action :set_question, only: %i[edit update destroy]
+  
   def index
     @questions = Question.all
   end
@@ -23,7 +24,6 @@ class QuestionsController < ApplicationController
   end
   
   def update 
-    @question = Question.find(params[:id])
     if @question.update question_params
       redirect_to questions_path
     else
@@ -32,7 +32,6 @@ class QuestionsController < ApplicationController
   end
   
   def destroy 
-    @question = Question.find(params[:id])
     if @question.delete
       redirect_to questions_path
     else
@@ -44,5 +43,9 @@ class QuestionsController < ApplicationController
   
   def question_params 
     params.require(:question).permit(:title, :body)
+  end
+  
+  def set_question
+    @question = Question.find(params[:id])
   end
 end
