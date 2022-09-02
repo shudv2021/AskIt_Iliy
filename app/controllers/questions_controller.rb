@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new question_params
     if @question.save
+      flash[:success] = 'Your question created!'
       redirect_to questions_path
     else
       render :new
@@ -25,6 +26,7 @@ class QuestionsController < ApplicationController
   
   def update 
     if @question.update question_params
+      flash[:success] = 'You update queston!'
       redirect_to questions_path
     else
       render :edit
@@ -33,6 +35,7 @@ class QuestionsController < ApplicationController
   
   def destroy 
     if @question.delete
+      flash[:success] = 'The quesion was destroyed'
       redirect_to questions_path
     else
       render plain: "Ошибка удаления"

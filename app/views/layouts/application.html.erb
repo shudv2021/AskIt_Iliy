@@ -23,7 +23,10 @@
       </div><%# container %>
     </header>
     
-    <main class='container mt-3'>  
+    <main class='container mt-3'>
+      <%flash.each do |key, value|%>
+        <%=tag.div "#{value}", class: "alert alert-#{key}"%>
+      <%end%>
       <%= yield %>
     <main>
   </body>
