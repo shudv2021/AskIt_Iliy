@@ -2,7 +2,6 @@
   <article class='card mb-2'>
     <div class='card-body'>
       <h4> <%=@question.title%></h4>
-      <p> <%=@question.updated_at%> </p>
       <p> <%=@question.body %><p>
       
       <%=link_to 'Edit', edit_question_path(@question), class: 'btn btn-primary'%>
@@ -10,3 +9,17 @@
                           class: 'btn btn-danger'%>      
     </div>
   </article>
+  
+  <%=render 'shared/errors', object: @answer%>
+  <%=form_with model: [@question, @answer] do |f|%>
+<div class='mb-3 row'>
+  <div class='col-sm-12 col-form-label'>
+    <%=f.text_area :body, size: '75x5', placeholder: 'Get your answer?', 
+                        class: 'from-control'%>
+  </div>
+</div>
+
+<div>
+  <%=f.submit class: 'btn btn-primary'%>
+</div>
+  <%end%>
