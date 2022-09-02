@@ -1,0 +1,10 @@
+@import 'bootstrap';
+
+.field_with_errors{
+  label{
+    color: $red  
+  }
+  .from-control{
+    border-color: $red
+  }
+};

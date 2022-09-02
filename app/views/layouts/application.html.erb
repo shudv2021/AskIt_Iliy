@@ -8,11 +8,26 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class='p-3 bg-dark text-white'>
+      <div class='container'>
+        <nav class='d-flex flex-wrap aligne-item-center justify-content-center justify-content-lg-start'>
+                    <ul class='nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0'>
+                      <li > <%=link_to 'Home', root_path, class: 'nav-link mb-2 text-white'%></li>
+                      <li> <%=link_to 'Questions', questions_path, class: 'nav-link mb-2 text-white'%></li>
+                    </ul>
+        </nav>            
+      </div><%# container %>
+    </header>
+    
+    <main class='container mt-3'>
+      <%flash.each do |key, value|%>
+        <%=tag.div "#{value}", class: "alert alert-#{key}"%>
+      <%end%>
+      <%= yield %>
+    <main>
   </body>
 </html>

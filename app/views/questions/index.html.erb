@@ -1,13 +1,18 @@
 <h1> All Questions </h1>
-<ol>
+
+<%=link_to 'Ask question', new_question_path, class: 'mb-2 btn btn-primary'%>
 <%@questions.reverse.each do |question|%>
-  <li>  <p><%=question.title%></p>
-        <p> <%=link_to 'Edit', edit_question_path(question)%>|
-            <%=link_to 'Delete', question_path(question), data: {method: :delete, confirm: 'Are your sure?'}%>
-        </p>
-  </li>
+  <article class='card mb-2'>
+    <div class='card-body'>
+      <h4> <%=question.title%></h4>
+      <%=link_to 'Edit', edit_question_path(question), class: 'btn btn-primary'%>
+      <%=link_to 'Delete', question_path(question), data: {method: :delete, confirm: 'Are your sure?'},
+                          class: 'btn btn-danger'%>      
+    </div>
+  </article>
+
 <%end%>
-</ol>
+
 
 <p>
 <%=link_to 'Add question', new_question_path%>
