@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
       
-  before_action :set_question, only: %i[edit update destroy]
+  before_action :set_question, only: %i[edit update destroy show]
   
   def index
     @questions = Question.all
@@ -8,6 +8,9 @@ class QuestionsController < ApplicationController
   
   def new
     @question = Question.new
+  end
+  
+  def show
   end
   
   def create
