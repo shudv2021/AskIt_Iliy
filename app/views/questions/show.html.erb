@@ -11,15 +11,35 @@
   </article>
   
   <%=render 'shared/errors', object: @answer%>
+  
   <%=form_with model: [@question, @answer] do |f|%>
-<div class='mb-3 row'>
-  <div class='col-sm-12 col-form-label'>
-    <%=f.text_area :body, size: '75x5', placeholder: 'Get your answer?', 
-                        class: 'from-control'%>
-  </div>
-</div>
-
-<div>
-  <%=f.submit class: 'btn btn-primary'%>
-</div>
+    <div class='mb-1 row'>
+      <div class='col-sm-12 col-form-label'>
+        <%=f.text_area :body, size: '75x5', placeholder: 'Get your answer?', 
+                            class: 'from-control'%>
+      </div>
+    </div>
+    <div class='p-1'>
+      <%=f.submit class: 'btn btn-primary'%>
+    </div>
   <%end%>
+  
+  <h4 class='mt-5'> Answers </h4>
+<%@answers.each do |answer|%>
+  <article class='mb-3'>
+      <time>
+      <%=answer.created_at %>
+      </time>
+      <p>
+      <%=answer.body %>  
+      <p>
+      <p>
+      <%=link_to 'Delete', question_answer_path(@question, answer),
+                          data: {method: :delete, confirm: 'Are your sure?'},
+                          class: 'btn btn-danger btn-sm'%> 
+      <p>
+  </article>
+  <%end%>
+
+
+

@@ -11,7 +11,8 @@ class QuestionsController < ApplicationController
   end
   
   def show
-    @answer = @question.answers.build
+    @answer = @question.answers.build    
+    @answers = @question.answers.order created_at: :desc
   end
   
   def create

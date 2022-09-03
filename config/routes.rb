@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get '/questions/:id/edit', to: 'questions#edit'
 
   resources :questions do
-    resources :answers, only: %i[create]
+    resources :answers, only: %i[create destroy]
   end
   
   root 'pages#index'

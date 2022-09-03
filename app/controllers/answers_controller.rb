@@ -1,6 +1,7 @@
+require 'pry'
 class AnswersController < ApplicationController
   
-  before_action :set_question!, only: [:create]
+  before_action :set_question!, only: [:create, :destroy]
   
   def create
     @answer = @question.answers.build(answers_params)
@@ -8,7 +9,18 @@ class AnswersController < ApplicationController
     flash[:success] = 'Answer save!'
     redirect_to question_path(@question)
     else
+      @answers = @question.answers.order created_at: :desc
       render 'questions/show'
+    end
+  end
+  
+  def destroy
+      
+    answer = @question.answers.find(params[:id])
+    if answer.destroy
+      flash[:success] = 'You destroy answer!'
+      redirect_to question_path(@question)
+    else
     end
   end
 
