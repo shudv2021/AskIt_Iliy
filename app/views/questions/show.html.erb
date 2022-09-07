@@ -1,3 +1,6 @@
+<%content_for :page_title, 'Question' %>
+<%currently_at%>
+
 <h1> Queston number <%=@question.id%> </h1>
   <article class='card mb-2'>
     <div class='card-body'>
@@ -15,22 +18,11 @@
   <%=render 'answers/form'%>
   
   <h4 class='mt-5'> Answers </h4>
-<%@answers.each do |answer|%>
-  <article class='mb-3 border border-secondary rounded-2 p-2', id=answer-<%=answer.id%>>
-      <time>
-      <%=answer.created_at %>
-      </time>
-      <p>
-      <%=answer.body %>  
-      <p>
-      <p>
-      <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-warning btn-sm' %>
-      <%=link_to 'Delete', question_answer_path(@question, answer),
-                          data: {method: :delete, confirm: 'Are your sure?'},
-                          class: 'btn btn-danger btn-sm'%> 
-      <p>
-  </article>
-  <%end%>
+<%# <%@answers.each do |answer|%>
+<%# <%end%> 
+<%# instad fo cycle we can use render with convention fo configurations %>
+<%=render @answers%>
+
 
 
 
