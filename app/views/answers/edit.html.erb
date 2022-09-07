@@ -1,11 +1,2 @@
-<%=form_with model: [@question, @answer] do |f|%>
-    <div class='mb-1 row'>
-      <div class='col-sm-12 col-form-label'>
-        <%=f.text_area :body, size: '75x5', placeholder: 'Get your answer?', 
-                            class: 'from-control'%>
-      </div>
-    </div>
-    <div class='p-1'>
-      <%=f.submit class: 'btn btn-primary'%>
-    </div>
-  <%end%>
+<h1> Input answer!</h1>
+<%=render 'form'%>
