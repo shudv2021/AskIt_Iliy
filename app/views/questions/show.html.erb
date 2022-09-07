@@ -16,7 +16,7 @@
   
   <h4 class='mt-5'> Answers </h4>
 <%@answers.each do |answer|%>
-  <article class='mb-3 border border-secondary rounded-2 p-2'>
+  <article class='mb-3 border border-secondary rounded-2 p-2', id=answer-<%=answer.id%>>
       <time>
       <%=answer.created_at %>
       </time>
