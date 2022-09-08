@@ -2,9 +2,10 @@
 <%currently_at(yield :page_title)%>
 
 <h1> All Questions </h1>
+<%= paginate @questions %>
 
 <%=link_to 'Ask question', new_question_path, class: 'mb-2 btn btn-primary'%>
-<%@questions.reverse.each do |question|%>
+<%@questions.each do |question|%>
   <article class='card mb-2'>
     <div class='card-body'>
       <h4> <%=question.title%></h4>
@@ -16,5 +17,4 @@
                           class: 'btn btn-danger'%>      
     </div>
   </article>
-
 <%end%>
