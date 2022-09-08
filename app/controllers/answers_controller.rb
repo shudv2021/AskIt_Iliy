@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
   
   def update
     @answer.update answers_params
-    redirect_to question_path(@question)
+    redirect_to question_path(@question, anchor: "answer-#{@answer.id}")
 
   end
   
