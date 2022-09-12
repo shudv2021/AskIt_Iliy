@@ -9,6 +9,7 @@ class UsersController < ApplicationController
                       
     if @user.save
       flash[:success] = 'User registrated'
+      session[:user_id] = @user.id
       redirect_to root_path
     else
       flash[:danger] = 'Registration failed'
