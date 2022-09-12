@@ -1,5 +1,7 @@
 module ApplicationHelper
-  #
+  
+  include Pagy::Frontend
+  
   def currently_at(page_title='')
     @page_title = page_title
     render 'shared/menu'

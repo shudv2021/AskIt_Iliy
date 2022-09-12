@@ -1,4 +1,4 @@
 <%content_for :page_title, 'Home' %>
 <%currently_at(yield :page_title)%>
-<h1> <%= @name %>, Welcome </h1>
+<h1> <%= current_user.name if user_signed_in? %>, Welcome </h1>
 <%= Time.now.year%>
